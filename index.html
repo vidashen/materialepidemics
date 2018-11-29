@@ -1,0 +1,116 @@
+<html>
+
+<head>
+<title>Material Epidemics</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	  <div id="topbar">
+     <div id="toptext">
+        <ul class="nav">
+          <!-- <li><a class="about">About</a></li> -->
+          <li><button id="about" class='button-default'>About </button></li>
+          <!-- <li><a class="navlink" href="#">Bbout</a></li> -->
+          <li><a class="navlink" href="#">Description</a></li>
+          <li><a class="navlink" href="#">Material Epidemics</a></li>
+          <!-- <li><a class="logo" href="https://www.arch.virginia.edu/"><img src="uva_logo.png"></a></li> -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- <div a class="logo" href="#"><img src="uva_logo.png"></a></div> -->
+
+<div class='logo'>
+    <img src="uva_logo.png"></div>
+
+<!-- Info window (shows info about parks when hovering over a park)  -->  
+  <!-- <div class='map-overlay' id='features' ss-container>
+    <h3>NEW YORK BUILDING CODE</h3>
+    <h5>Research on impact of building code on forms</h5>
+    <p>f you use some client Framework, like Angular, Aurelia, etc - or any library that includes DOMElements dynamically in your app, and you want to use the SimpleScrollbar ss-container attribute, you can use the SimpleScrollbar.initAll method, and it will turn all the elements with that attribute in a scrollable one for you and you want to use the SimpleScrollbar ss-container attribute, you can use the SimpleScrollbar.initAll method, and it will turn all the elements with that attribute in a scrollable one for you. and you want to use the SimpleScrollbar ss-container attribute, you can use the SimpleScrollbar.initAll method, and it will turn all the elements with that attribute in a scrollable one for you and you want to use the SimpleScrollbar ss-container attribute, you can use the SimpleScrollbar.initAll method, and it will turn all the elements with that attribute in a scrollable one for you.and you want to use the SimpleScrollbar ss-container attribute, you can use the</p>
+    <img src="Lidar-1.png">
+    <p>SimpleScrollbar.initAll method, and it will turn all the elements with that attribute in a scrollable one for you and you want to use the SimpleScrollbar ss-container attribute, you can use the SimpleScrollbar.initAll method, and it will turn all the elements with that attribute in a scrollable one for you.and you want to use the SimpleScrollbar ss-container attribute, you can use the SimpleScrollbar.initAll method, and it will turn all the elements with that attribute in a scrollable one for you and you want to use the SimpleScrollbar ss-container attribute, you can use the SimpleScrollbar.initAll method, and it will turn all the elements with that attribute in a scrollable one for you.</p>
+    <div id='info-window-body'>
+      <p>some description in future.</p>
+    </div>
+  </div> -->
+
+  
+  <!-- <div>
+    <a class="logo" href="https://www.arch.virginia.edu/">
+      <img src="uva_logo.png"></a>
+  </div> -->
+
+  <div id="map"></div>
+
+  <div class='modal'>
+    
+    <h2 class='modal-title'>About this project</h2>
+    
+    <div class='modal-body'><p>This is an example map of data project: Material Epidemics at the University of Virginia, led by Jeana Ripple and Andrea Hansen Phillips.</p><p>Map data courtesy of <a href='https://www.mapbox.com/studio/'>Mapbox Studio</a> and the <a href='http://www.charlottesville.org/online-services/maps-and-gis-data'>New York City</a></p><p>For questions or to improve this map, contact <a href='mailto:ah2th@virginia.edu'>Andrea Hansen Phillips</a></p></div>
+
+    <button class='close-button'>&times;</button>
+   </div>
+   <div id="screen"></div> <!-- Black overlay behind the modal -->
+
+
+<div class='map-overlay' id='chapters' ss-container>
+    <h3>NEW YORK CITY BUILDING CODE</h3>
+    <h5>Research on impact of building code on forms</h5>
+  </div>
+
+  <div class='map-overlay' id='legend'>
+    <ul class="types">
+          <li>Type1-3</li>
+          <li>Type5</li>
+          <li><div id='legend2'></div></li>
+        </ul>
+    <!-- <div id='legend1'>
+      <p> Type1-3</p>
+    </div> -->
+    <!-- <div id='legend2'>
+      <p> Type5</p>
+    </div> -->
+  </div>
+
+
+
+
+  <div id='layers-control'></div>
+
+  <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Climate Vulnerability</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#">50 year flood</a>
+    <a href="#">100 year flood</a>
+    <a href="#">200 year flood</a>
+  </div>
+</div>
+
+<div class='slideroverlay' id='bottom'>
+    <div class='slidecontainer'>
+        <label id='years'></label>
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <!-- <h4> 1929 1960 1980 2005 </h4> -->
+        <div id="slideyears">
+        <ul class="text">
+          <li>1929</li>
+          <li>1960</li>
+          <li>1980</li>
+          <li>2005</li>
+        </ul>
+      </div>
+    </div>
+</div>
+
+
+</body>
+<script src="iron.js"></script>
+  <script src='simple-scrollbar-master/simple-scrollbar.min.js'></script>
+
+</html>
+
