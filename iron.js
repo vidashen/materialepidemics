@@ -1,5 +1,5 @@
 // Initialize map
-mapboxgl.accessToken = 'pk.eyJ1IjoieWlueXVmb25nIiwiYSI6ImNqbzZoajM3MjBjZWQzcHFyc3d1YXBqbWgifQ.kmHwqPalXjHVZYukwr3Otw'; // replace this value with your own access token from Mapbox Studio
+mapboxgl.accessToken = 'pk.eyJ1IjoieWlueXVmb25nIiwiYSI6ImNqcGQ0cThzMTBkOW4zd28zMnEzNGlrYW4ifQ.iQVjppNszzjhRgP3bNGT2g'; // replace this value with your own access token from Mapbox Studio
 
 var map = new mapboxgl.Map({
 	container: 'map', // this is the ID of the div in index.html where the map should go
@@ -83,25 +83,25 @@ for (i=0; i<layers.length; i++) {
 
 // 10.25 starts here----------------------------------------------
 // 
-// INFO WINDOW CODE 
+// // INFO WINDOW CODE 
 
-    map.on('mousemove', function(e) {   // Event listener to do some code when the mouse moves, see https://www.mapbox.com/mapbox-gl-js/api/#events. 
+//     map.on('mousemove', function(e) {   // Event listener to do some code when the mouse moves, see https://www.mapbox.com/mapbox-gl-js/api/#events. 
 
-        var parks = map.queryRenderedFeatures(e.point, {    
-            layers: ['cville-parks']    // replace 'cville-parks' with the name of the layer you want to query (from your Mapbox Studio map, the name in the layers panel). For more info on queryRenderedFeatures, see the example at https://www.mapbox.com/mapbox-gl-js/example/queryrenderedfeatures/. Documentation at https://www.mapbox.com/mapbox-gl-js/api/#map#queryrenderedfeatures.
-        });
+//         var parks = map.queryRenderedFeatures(e.point, {    
+//             layers: ['cville-parks']    // replace 'cville-parks' with the name of the layer you want to query (from your Mapbox Studio map, the name in the layers panel). For more info on queryRenderedFeatures, see the example at https://www.mapbox.com/mapbox-gl-js/example/queryrenderedfeatures/. Documentation at https://www.mapbox.com/mapbox-gl-js/api/#map#queryrenderedfeatures.
+//         });
               
-        if (parks.length > 0) {   // if statement to make sure the following code is only added to the info window if the mouse moves over a state
+//         if (parks.length > 0) {   // if statement to make sure the following code is only added to the info window if the mouse moves over a state
 
-            $('#info-window-body').html('<h3><strong>' + parks[0].properties.PARKNAME + '</strong></h3><p>' + parks[0].properties.PARK_TYPE + ' PARK</p><img class="park-image" src="img/' + parks[0].properties.PARKNAME + '.jpg">');
+//             $('#info-window-body').html('<h3><strong>' + parks[0].properties.PARKNAME + '</strong></h3><p>' + parks[0].properties.PARK_TYPE + ' PARK</p><img class="park-image" src="img/' + parks[0].properties.PARKNAME + '.jpg">');
 
-        } else {    // what shows up in the info window if you are NOT hovering over a building
+//         } else {    // what shows up in the info window if you are NOT hovering over a building
 
-            $('#info-window-body').html('<p>Not hovering over a <strong>building</strong> right now.</p>');
+//             $('#info-window-body').html('<p>Not hovering over a <strong>building</strong> right now.</p>');
             
-        }
+//         }
 
-    });
+//     });
 
     // POPUPS CODE
 
@@ -130,7 +130,7 @@ for (i=0; i<layers.length; i++) {
       popup.setLngLat(stops[0].geometry.coordinates);
 
       // Set the contents of the popup window
-      popup.setHTML('<h3>Stop ID: ' + stops[0].properties.stop_id + '</h3><p>' + stops[0].properties.stop_name + '</p>');
+      popup.setHTML('<h3>Height: ' + stops[0].properties.stop_id + '</h3><p>' + stops[0].properties.stop_name + '</p>');
             // stops[0].properties.stop_id will become the title of the popup (<h3> element)
             // stops[0].properties.stop_name will become the body of the popup
 
@@ -150,16 +150,12 @@ for (i=0; i<layers.length; i++) {
     var layers = [  // an array of the layers you want to include in the layers control (layers to turn off and on)
 
         // [layerMachineName, layerDisplayName]
-        ['cville-bus-stops', 'Urban Decay'], 
-        ['cville-bus-stops', 'Health Disparity'], 
-        ['cville-bus-stops', 'Building Data'],    
+        ['1-2020 femasmall', 'Urban Decay'], 
+        ['100-2050 femasmall', 'Health Disparity'], 
+        ['500-2050 femasmall', 'Building Data'],    
         ['500-2050 femasmall', 'Climate Vulnerability'],
     ]; 
-    // var sublayers = [
-    //     ['1-2020 femasmall', 'sub1'],
-    //     ['100-2050 femasmall', 'sub2'],
-    //     ['100-2050 femasmall', 'sub3'], 
-    // ];
+
     
     // functions to perform when map loads
     map.on('load', function () {
@@ -188,30 +184,6 @@ for (i=0; i<layers.length; i++) {
                     map.setLayoutProperty(clickedLayer, 'visibility', 'visible'); // see https://www.mapbox.com/mapbox-gl-js/api/#map#setlayoutproperty
                 }
         });
-        // for (i=0; i<sublayers.length; i++) {
-
-        //     // add a button for each layer
-        //     $("#layers-control").append("<a href='#' class='active button-default' id='" + sublayers[i][0] + "'>" + sublayers[i][1] + "</a>");
-        // }
-
-        // // show/hide layers when button is clicked, it's a everntlistener because you have"on"
-        // $("#layers-control>a").on('click', function(e) {
-
-        //         var clickedLayer = e.target.id;
-        //         e.preventDefault();
-        //         e.stopPropagation();
-
-        //         var visibility = map.getLayoutProperty(clickedLayer, 'visibility');  // see https://www.mapbox.com/mapbox-gl-js/api/#map#getlayoutproperty
-        //         console.log(visibility);
-
-        //         if (visibility === 'visible') {
-        //             map.setLayoutProperty(clickedLayer, 'visibility', 'none');  // see https://www.mapbox.com/mapbox-gl-js/api/#map#setlayoutproperty
-        //             $(e.target).removeClass('active');
-        //         } else {
-        //             $(e.target).addClass('active');
-        //             map.setLayoutProperty(clickedLayer, 'visibility', 'visible'); // see https://www.mapbox.com/mapbox-gl-js/api/#map#setlayoutproperty
-        //         }
-        // });
     });
 
 
@@ -307,12 +279,15 @@ for (i=0; i<layers.length; i++) {
 
 // TIMESLIDER//
 var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
+
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-    output.innerHTML = this.value;
+    var year = this.value; //value of slider//
+    map.setFilter('mylayer1', ['<=','cnstrct_yr', year]);
+    map.setFilter('mylayer2', ['<=','cnstrct_yr', year]);
+    map.setFilter('mylayer3', ['<=','cnstrct_yr', year]);
+    map.setFilter('mylayer4', ['<=','cnstrct_yr', year]);
 }
 
 var layers = [
